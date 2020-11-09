@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <link rel="stylesheet" href="./index.css">
+    <style>
+        @media (max-width:450px){
+            main{
+                width:auto;
+                height:auto;
+                padding:0;
+                margin:0;
+            }
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section>
+            <h3>Redux 工作流程</h3>
+            <ul>
+                <li>1,React Component 组件中访问 【state】 </li>
+                <li>2,通过 Action Creators，请求和改变状态 【dispatch(action)】 </li>
+                <li>3,在 store 中请求状态 【previousState,action】</li>
+                <li>4,在 Reducers 中返回具体的 store。【newState】</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
