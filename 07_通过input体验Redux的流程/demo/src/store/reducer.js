@@ -1,5 +1,8 @@
+if(localStorage.getItem('list') === [] || !localStorage.getItem('list')){
+    localStorage.setItem('list', JSON.stringify(['学习前端知识', '查看业务代码', '读写博客']))
+}
 const defaultState = {
-    list: ['01,学习前端知识', '02,查看业务代码', '03,读写博客'],
+    list: JSON.parse(localStorage.getItem('list')),
     inputValue: ''
 }
 
@@ -13,8 +16,19 @@ const result =  (state = defaultState, action) => {
          let newState = JSON.parse(JSON.stringify(state))
          newState.inputValue = action.value
          return newState
+     }else if(action.type === 'addListItem'){
+         let newState =JSON.parse(JSON.stringify(state))
+         newState.list.push(action.value)
+         localStorage.setItem('list', JSON.stringify(newState.list))
+         newState.inputValue = ''
+         return newState
      }
-
+    // else if(action.type === 'deleteListItem'){
+    //      let newState = JSON.parse(JSON.stringify(state))
+    //      newState.list.splice(action.value, 1)
+    //      localStorage.setItem('list', JSON.stringify(newState.list))
+    //      return newState 
+    //  }
      return state
 }
 

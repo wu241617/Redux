@@ -18,3 +18,9 @@ html,body{
 #list{
     margin-top:15px;
 }
+.btn{
+    border:0;
+    width:auto;
+    height:20px;
+    float:right;
+}
