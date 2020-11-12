@@ -18,17 +18,16 @@ const result =  (state = defaultState, action) => {
          return newState
      }else if(action.type === 'addListItem'){
          let newState =JSON.parse(JSON.stringify(state))
-         newState.list.push(action.value)
+         newState.list.push(newState.inputValue)
          localStorage.setItem('list', JSON.stringify(newState.list))
          newState.inputValue = ''
          return newState
+     }else if(action.type === 'deleteListItem'){
+         let newState = JSON.parse(JSON.stringify(state))
+         newState.list.splice(action.value, 1)
+         localStorage.setItem('list', JSON.stringify(newState.list))
+         return newState 
      }
-    // else if(action.type === 'deleteListItem'){
-    //      let newState = JSON.parse(JSON.stringify(state))
-    //      newState.list.splice(action.value, 1)
-    //      localStorage.setItem('list', JSON.stringify(newState.list))
-    //      return newState 
-    //  }
      return state
 }
 

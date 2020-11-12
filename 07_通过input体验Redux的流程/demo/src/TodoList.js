@@ -20,8 +20,6 @@ class TodoList extends Component {
         this.inputChange = this.inputChange.bind(this)
         // 添加按钮的点击事件函数
         this.addListItem = this.addListItem.bind(this)
-        // 点击按钮，删除对应子项
-        //this.deleteListItem = this.deleteListItem.bind(this)
         // 订阅模式
         // 具体的方法函数
         this.storeChange = this.storeChange.bind(this)
@@ -40,19 +38,19 @@ class TodoList extends Component {
                     style={{width: '250px'}}
                     onChange={this.inputChange}
                     value={this.state.inputValue}
-                    ref={(input) => {this.input = input}}
+                    // ref={(input) => {this.input = input}}
                     ></Input>
                     <Button type='primary' onClick={this.addListItem}>新增</Button>
                     <div id='list'>
                         <List
                             bordered
                             dataSource={this.state.list}
-                            renderItem={(item, index) => <List.Item>{index + 1 + ', ' + item}
-                            {/* <Button type="primary"
+                            renderItem={(item, index) => <List.Item >{index + 1 + ', ' + item}
+                            <Button type="primary"
                              danger size="small" 
                              className="btn"
-                             onClick={this.deleteListItem(index)}
-                            >删除</Button> */}
+                             onClick={this.deleteListItem.bind(this, index)}
+                            >删除</Button>
                             </List.Item>}
                         />
                     </div>
@@ -78,21 +76,18 @@ class TodoList extends Component {
 
     // 点击添加子项
     addListItem(){
-        const action = {
-            type: 'addListItem',
-            value: this.input.props.value
-        }
+        const action = { type: 'addListItem'}
         store.dispatch(action)
     }
 
     // 根据 index 删除对应子项
-    // deleteListItem(index){
-    //     const action = {
-    //         type: 'deleteListItem',
-    //         value: index
-    //     }
-    //     store.dispatch(action)
-    // }
+    deleteListItem(index){
+        const action = {
+            type: 'deleteListItem',
+            value: index
+        }
+        store.dispatch(action)
+    }
 }
 
 export default TodoList
