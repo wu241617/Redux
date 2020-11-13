@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <link rel="stylesheet" href="./index.css">
+    <style>
+        @media (max-width:450px){
+            main{
+                width:auto;
+                height:auto;
+                padding:0;
+                margin:0;
+            }
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section>
+            <h3>Redux 中常遇到的三个坑</h3>
+            <ul>
+                <li>Store 必须是唯一的</li>
+                <li>只有 store 能改变自己的内容，Reducer 不能改变</li>
+                <li>Reducer 必须是纯函数 【纯函数: 如果函数的调用参数相同，则永远返回相同的结果，它不依赖于程序执行期间函数外部任何状态或数据的变化，必须只依赖于其输入参数。】</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
