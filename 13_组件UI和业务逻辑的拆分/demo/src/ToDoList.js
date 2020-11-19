@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 // 导入 store 中入口文件，使用 redux 做全局状态管理
 import store from './store/index'
 // 导入分离的类型文件
-import { INPUT_CHANGE, ADD_ITEM, DELETE_ITEM } from './store/actionType'
+import { INPUT_CHANGE, ADD_ITEM, DELETE_ITEM, LIST } from './store/actionType'
 // 导入分离的生成 action 的文件
 import actionCreate from './store/actionCreate'
 // 导入样式组件
 import ToDoListUI from './ToDoListUI'
+import axios from 'axios'
 
 // 书写组件类
 class ToDoList extends Component {
@@ -39,6 +40,14 @@ class ToDoList extends Component {
            />
         )
     }
+    componentDidMount(){
+        axios.get('https://www.easy-mock.com/mock/5cfcce489dc7c36bd6da2c99/xiaojiejie/getList')
+        .then((res) => {
+            const action = actionCreate(LIST, res.data.data)
+            store.dispatch(action)
+        })
+    }
+
     // 订阅模式，具体的变更函数
     storeChange(){
         this.setState(store.getState())

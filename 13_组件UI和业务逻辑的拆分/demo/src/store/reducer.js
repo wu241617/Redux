@@ -1,6 +1,6 @@
 // reducer 中，只能读取 state，不能修改
 // 调整 newState 值得业务逻辑 
-import { INPUT_CHANGE, ADD_ITEM, DELETE_ITEM } from './actionType'
+import { INPUT_CHANGE, ADD_ITEM, DELETE_ITEM,LIST } from './actionType'
 
 const defaultState = {
     inputValue: '',
@@ -20,6 +20,10 @@ const result = (state=defaultState, action) => {
     }else if(action.type === DELETE_ITEM){
         let newState = JSON.parse(JSON.stringify(state))
         newState.list.splice(action.value,1)
+        return newState
+    }else if(action.type === LIST){
+        let newState = JSON.parse(JSON.stringify(state))
+        newState.list = action.value
         return newState
     }
     return state
